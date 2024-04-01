@@ -6,7 +6,7 @@ function Notion() {
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
   const [APIData, setAPIData] = useState([]);
-  const [showAPIData, setShowAPIData] = useState(false); // New state for controlling the visibility
+  const [showAPIData, setShowAPIData] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,13 +19,12 @@ function Notion() {
     });
   };
 
-  // New function to fetch API data and display it
   const fetchAndDisplayAPIData = () => {
     Axios.get("http://localhost:8000/NotionAPIGet")
       .then((response) => {
         setAPIData(response.data.results);
         console.log("API Response", response.data.results);
-        setShowAPIData(true); // Show the API data
+        setShowAPIData(true);
       })
       .catch((error) => {
         console.log(error);
@@ -54,10 +53,8 @@ function Notion() {
             <button type="submit">Submit</button>
           </form>
           <Button onClick={fetchAndDisplayAPIData}>Load Reviews</Button>{" "}
-          {/* New button */}
         </div>
 
-        {/* Conditionally render this part based on showAPIData state */}
         {showAPIData && (
           <div className="Data">
             <p className="text-lg font-bold mb-4">API DATA</p>
