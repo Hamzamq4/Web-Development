@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { Button } from "../src/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import viteLogo from "../public/vite.svg";
 
 function Notion() {
   const [name, setName] = useState("");
@@ -64,7 +65,10 @@ function Notion() {
             <p className="text-lg font-bold mb-4">API DATA</p>
             <Tabs defaultValue="Hamza" className="w-full">
               <TabsList className="bg-black text-white">
-                <TabsTrigger value="Hamza">Hamza</TabsTrigger>
+                <TabsTrigger value="Hamza">
+                  {" "}
+                  <img src={viteLogo} alt="Vite logo" /> Hamza
+                </TabsTrigger>
                 <TabsTrigger value="Simon">Simon</TabsTrigger>
               </TabsList>
 
