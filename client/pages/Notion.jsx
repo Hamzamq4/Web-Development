@@ -13,12 +13,17 @@ function Notion() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!name.trim() || !review.trim()) {
+      alert("Please ensure both your name and review are filled out.");
+      return;
+    }
+
     Axios.post("http://localhost:8000/NotionAPIPost", {
       Name: name,
       Review: review,
     })
       .then(() => {
-        // Add your success logic here (e.g., a success message or redirect)
+        console.log("Success");
       })
       .catch((error) => {
         console.error(error);
@@ -55,7 +60,7 @@ function Notion() {
               onChange={(e) => setReview(e.target.value)}
             />
 
-            <Button type="submit">Submit</Button>
+            <Button type="submit"> Submit </Button>
           </form>
           <Button onClick={fetchAndDisplayAPIData}>Load Reviews</Button>
         </div>

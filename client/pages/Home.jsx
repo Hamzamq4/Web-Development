@@ -41,6 +41,7 @@ function Home() {
         <Button className="bg-white text-black hover:bg-sky-700 hover:text-white">
           Homepage
         </Button>
+
         <div className="text-center font-bold text-gray-500 text-lg md:text-xl lg:text-2xl xl:text-3xl">
           {timeLeft.days} Days {timeLeft.hours} Hours {timeLeft.minutes} Minutes{" "}
           {timeLeft.seconds} Seconds
