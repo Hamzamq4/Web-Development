@@ -4,7 +4,7 @@ import { Button } from "../src/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import viteLogo from "../public/vite.svg";
 
-function Notion() {
+function Testimonials() {
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
   const [APIData, setAPIData] = useState([]);
@@ -116,4 +116,4 @@ function Notion() {
   );
 }
 
-export default Notion;
+export default Testimonials;
