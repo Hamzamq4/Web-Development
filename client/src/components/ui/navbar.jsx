@@ -31,9 +31,9 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-black flex justify-between items-center h-24 min-w-screen mx-auto px-4 text-white">
+    <div className="bg-secondary flex justify-between items-center h-18 min-w-screen mx-auto px-4 text-primary mb-8">
       {/* Logo */}
-      <h1 className="w-full text-3xl font-bold text-[#00df9a]">
+      <h1 className="w-full text-2xl font-bold text-primary">
         <Link to="/">Hamza and Simon</Link>
       </h1>
       {/* Desktop Navigation */}
@@ -61,7 +61,7 @@ const Navbar = () => {
       <ul
         className={
           nav
-            ? "fixed md:hidden left-0 top-0 w-[70%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500"
+            ? "fixed md:hidden left-0 top-0 w-[70%] h-full border-r border-r-gray-900 bg-primary ease-in-out duration-500"
             : "ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]"
         }
       >

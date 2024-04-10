@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Popup from "@/components/ui/popup";
-import viteLogo from "../public/vite.svg";
+import viteLogo from "/vite.svg";
 
 function Projects() {
   const [APIData, setAPIData] = useState([]);

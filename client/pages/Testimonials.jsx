@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Button } from "../src/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import viteLogo from "../public/vite.svg";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../src/components/ui/card";
 
 function Testimonials() {
   const [name, setName] = useState("");
@@ -40,77 +46,78 @@ function Testimonials() {
         console.error(error);
       });
   };
+  useEffect(() => {
+    fetchAndDisplayAPIData();
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <div className="form">
-          <form onSubmit={handleSubmit}>
-            <p>First Name</p>
-            <input
-              type="text"
-              placeholder="Your Name"
-              onChange={(e) => setName(e.target.value)}
-            />
-
-            <p>Review</p>
-            <input
-              type="text"
-              placeholder="Your Review"
-              onChange={(e) => setReview(e.target.value)}
-            />
-
-            <Button type="submit"> Submit </Button>
-          </form>
-          <Button onClick={fetchAndDisplayAPIData}>Load Reviews</Button>
-        </div>
-
         {showAPIData && (
           <div className="Data">
-            <p className="text-lg font-bold mb-4">API DATA</p>
-            <Tabs defaultValue="Hamza" className="w-full">
-              <TabsList className="bg-black text-white">
-                <TabsTrigger value="Hamza">
-                  {" "}
-                  <img src={viteLogo} alt="Vite logo" /> Hamza
-                </TabsTrigger>
-                <TabsTrigger value="Simon">Simon</TabsTrigger>
-              </TabsList>
+            <h1 className="text-2xl font-bold mb-4">Testimonials</h1>
 
-              <TabsContent value="Hamza">
-                <div className="flex flex-wrap -m-2">
-                  {APIData.map((data) => {
-                    if (
-                      data.properties.Name.title.length > 0 &&
-                      data.properties.Review.rich_text.length > 0
-                    ) {
-                      return (
-                        <div
-                          key={data.id}
-                          className="p-2 w-1/2 md:w-1/3 lg:w-1/4"
-                        >
-                          <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 p-4 flex flex-col justify-between h-52 w-52 content-evenly">
-                            <p className="text-xl font-semibold">
-                              {data.properties.Name.title[0].plain_text}
-                            </p>
-                            <p className="text-gray-600">
-                              {data.properties.Review.rich_text[0].plain_text}
-                            </p>
-                          </div>
-                        </div>
-                      );
-                    }
-                    return null;
-                  })}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="Simon">
-                <p>Her kommer Simons Testimonials</p>
-              </TabsContent>
-            </Tabs>
+            <div className="flex flex-wrap -m-2">
+              {APIData.map((data) => {
+                if (
+                  data.properties.Name.title.length > 0 &&
+                  data.properties.Review.rich_text.length > 0
+                ) {
+                  return (
+                    <div key={data.id} className="p-2 w-1/2 md:w-1/3 lg:w-1/4">
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>
+                            {data.properties.Name.title[0].plain_text}
+                          </CardTitle>
+                          <CardDescription>Card Description</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p>
+                            {data.properties.Review.rich_text[0].plain_text}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </div>
           </div>
         )}
+        <div className="flex flex-col items-center justify-center shadow-lg">
+          <span className="text-2xl font-extrabold">
+            We'd love to get your feedback!
+          </span>
+          <div className="">
+            <form
+              className="flex w-5/6 p-10 justify-between"
+              onSubmit={handleSubmit}
+            >
+              <p className="flex items-center">Name</p>
+              <input
+                type="text"
+                placeholder="John Doe"
+                className="border m-2 rounded-sm flex items-center"
+                onChange={(e) => setName(e.target.value)}
+              />
+
+              <p className="flex items-center">Review</p>
+              <input
+                type="text"
+                placeholder="They are awesome!!"
+                className="border m-2 rounded-sm flex items-center"
+                onChange={(e) => setReview(e.target.value)}
+              />
+
+              <Button className="m-2" type="submit">
+                {" "}
+                Submit{" "}
+              </Button>
+            </form>
+          </div>
+        </div>
       </header>
     </div>
   );
