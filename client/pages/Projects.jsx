@@ -26,64 +26,89 @@ function Projects() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {showAPIData && (
-          <div className="Data">
-            <h1 className="text-lg font-bold mb-4">Projects</h1>
-            <p>
-              On this page, you will find the various projects that Simon and
-              Hamza have worked on both collectively and separately
-            </p>
-            <Tabs defaultValue="Hamza" className="w-full">
-              <TabsList className="bg-black text-white">
-                <TabsTrigger value="Hamza">
-                  <img src={viteLogo} alt="Vite logo" /> Hamza
-                </TabsTrigger>
-                <TabsTrigger value="Simon">Simon</TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="Hamza">
-                <div className="flex flex-wrap -m-2">
-                  {APIData.map((data) => {
-                    if (
-                      data.properties.ProjectName.title.length > 0 &&
-                      data.properties.ShortSum.rich_text.length > 0 &&
-                      data.properties.LongSum.rich_text.length > 0
-                    ) {
-                      return (
-                        <div
-                          key={data.id}
-                          className="p-2 w-1/2 md:w-1/3 lg:w-1/4"
-                        >
-                          <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 p-4 flex flex-col justify-between h-full">
-                            <p className="text-xl font-semibold">
-                              {data.properties.ProjectName.title[0].plain_text}
-                            </p>
-                            <p className="text-gray-600">
-                              {data.properties.ShortSum.rich_text[0].plain_text}
-                            </p>
-                            <button onClick={() => setPopup(data)}>
-                              See More
-                            </button>
-                          </div>
-                        </div>
-                      );
-                    }
-                    return null;
-                  })}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="Simon">
-                <p>Simon's Testimonials will be displayed here.</p>
-              </TabsContent>
-            </Tabs>
+    <>
+      {/* Project Section Hero */}
+      <section className=" justify-center items-center flex-col pb-36">
+        {/* Hero Container */}
+        <div className="max-w-[1355px] w-full flex items-center justify-center pt-2 mx-auto">
+          <div>
+            <span className=" mb-5 p-2 bg-foreground rounded-xl align-left">
+              <h2 className=" text-white text-sm ">Hamza & Simon</h2>
+            </span>
           </div>
-        )}
-      </header>
-      <Popup isOpen={!!popup} onClose={() => setPopup(null)} project={popup} />
-    </div>
+        </div>
+        {/* Hero Container End */}
+      </section>
+      {/* Project Section Hero End */}
+      <div className="App">
+        <header className="App-header">
+          {showAPIData && (
+            <div className="Data">
+              <h1 className="text-lg font-bold mb-4">Projects</h1>
+              <p>
+                On this page, you will find the various projects that Simon and
+                Hamza have worked on both collectively and separately
+              </p>
+              <Tabs defaultValue="Hamza" className="w-full">
+                <TabsList className="bg-black text-white">
+                  <TabsTrigger value="Hamza">
+                    <img src={viteLogo} alt="Vite logo" /> Hamza
+                  </TabsTrigger>
+                  <TabsTrigger value="Simon">Simon</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="Hamza">
+                  <div className="flex flex-wrap -m-2">
+                    {APIData.map((data) => {
+                      if (
+                        data.properties.ProjectName.title.length > 0 &&
+                        data.properties.ShortSum.rich_text.length > 0 &&
+                        data.properties.LongSum.rich_text.length > 0
+                      ) {
+                        return (
+                          <div
+                            key={data.id}
+                            className="p-2 w-1/2 md:w-1/3 lg:w-1/4"
+                          >
+                            <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 p-4 flex flex-col justify-between h-full">
+                              <p className="text-xl font-semibold">
+                                {
+                                  data.properties.ProjectName.title[0]
+                                    .plain_text
+                                }
+                              </p>
+                              <p className="text-gray-600">
+                                {
+                                  data.properties.ShortSum.rich_text[0]
+                                    .plain_text
+                                }
+                              </p>
+                              <button onClick={() => setPopup(data)}>
+                                See More
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="Simon">
+                  <p>Simon's Testimonials will be displayed here.</p>
+                </TabsContent>
+              </Tabs>
+            </div>
+          )}
+        </header>
+        <Popup
+          isOpen={!!popup}
+          onClose={() => setPopup(null)}
+          project={popup}
+        />
+      </div>
+    </>
   );
 }
 
