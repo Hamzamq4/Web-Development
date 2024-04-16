@@ -4,23 +4,25 @@ import Home from "../pages/Home";
 import Projects from "../pages/Projects";
 import Contact from "../pages/Contact";
 import Testimonials from "../pages/Testimonials";
+import ProjectDetails from "../pages/ProjectDetails.jsx";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
+import Testimonialss from "./components/ui/testimonals_1";
 
 function App() {
   return (
-    <body className="bg-black m-0">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/testimonials" element={<Testimonials />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </body>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:projectId" element={<ProjectDetails />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/testimonials" element={<Testimonials />} />
+      </Routes>
+      <Testimonialss />
+      <Footer />
+    </BrowserRouter>
   );
 }
 

@@ -10,19 +10,19 @@ const app = express();
 app.use(cors());
 
 const authToken = process.env.SECRET_KEY;
-const testimonialsHamza = process.env.TESTIMONIALS_HAMZA;
-const projectsHamza = process.env.PROJECTS_HAMZA;
+const web_Testimonials = process.env.TESTIMONIALS;
+const web_Projects = process.env.PROJECTS;
 
 const notion = new Client({ auth: authToken });
 
 // Post Method for Testimonials
-app.post("/NotionAPIPost", jsonParser, async (req, res) => {
+app.post("/Post", jsonParser, async (req, res) => {
   const { Name, Review } = req.body;
   console.log(Name, Review);
   try {
     const response = await notion.pages.create({
       parent: {
-        database_id: testimonialsHamza,
+        database_id: web_Testimonials,
       },
       properties: {
         Name: {
@@ -53,10 +53,10 @@ app.post("/NotionAPIPost", jsonParser, async (req, res) => {
   }
 });
 
-app.get("/NotionAPIGet", async (req, res) => {
+app.get("/Testimonials", async (req, res) => {
   try {
     const response = await notion.databases.query({
-      database_id: testimonialsHamza,
+      database_id: web_Testimonials,
       sorts: [
         {
           timestamp: "created_time",
@@ -71,10 +71,10 @@ app.get("/NotionAPIGet", async (req, res) => {
     console.log(error);
   }
 });
-app.get("/HamzaProjects", async (req, res) => {
+app.get("/Projects", async (req, res) => {
   try {
     const response = await notion.databases.query({
-      database_id: projectsHamza,
+      database_id: web_Projects,
       sorts: [
         {
           timestamp: "created_time",

@@ -24,7 +24,7 @@ function Testimonials() {
       return;
     }
 
-    Axios.post("http://localhost:8000/NotionAPIPost", {
+    Axios.post("http://localhost:8000/Post", {
       Name: name,
       Review: review,
     })
@@ -37,7 +37,7 @@ function Testimonials() {
   };
 
   const fetchAndDisplayAPIData = () => {
-    Axios.get("http://localhost:8000/NotionAPIGet")
+    Axios.get("http://localhost:8000/Testimonials")
       .then((response) => {
         setAPIData(response.data.results);
         setShowAPIData(true);
