@@ -21,13 +21,7 @@ const Navbar = () => {
   const navItems = [
     { id: 1, text: "Home", href: "/", icon: <AiFillHome /> },
     { id: 2, text: "Projects", href: "/projects", icon: <AiFillFolder /> },
-    {
-      id: 3,
-      text: "Testimonals",
-      href: "/testimonials",
-      icon: <AiFillLike />,
-    },
-    { id: 4, text: "Contact", href: "/contact", icon: <AiFillMail /> },
+    { id: 3, text: "Contact", href: "/contact", icon: <AiFillMail /> },
   ];
 
   return (
