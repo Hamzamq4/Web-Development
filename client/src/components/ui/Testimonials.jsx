@@ -43,6 +43,8 @@ function Testimonials() {
           status: "success",
           variant: "default",
         });
+        setName("");
+        setReview("");
       })
       .catch((error) => {
         console.error(error);
@@ -120,9 +122,8 @@ function Testimonials() {
               <p className="text-slate-400 text-center">
                 We'd love to hear from you
               </p>
-
               <form
-                className=" mt-2 w-full flex flex-col"
+                className="mt-2 w-full flex flex-col"
                 onSubmit={handleSubmit}
               >
                 <div className="flex flex-col mb-4">
@@ -131,6 +132,7 @@ function Testimonials() {
                     type="text"
                     placeholder="John Doe"
                     className="border p-2 rounded-sm text-black"
+                    value={name} // Bind state to the input
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -141,12 +143,13 @@ function Testimonials() {
                     placeholder="They are awesome!!"
                     className="border p-2 rounded-sm text-black text-sm"
                     rows="2"
+                    value={review} // Bind state to the textarea
                     onChange={(e) => setReview(e.target.value)}
                   />
                 </div>
 
                 <Button
-                  className=" self-end mt-2 rounded-lg bg-white text-black hover:bg-black hover:text-white"
+                  className="self-end mt-2 rounded-lg bg-white text-black hover:bg-black hover:text-white"
                   type="submit"
                 >
                   Submit

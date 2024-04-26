@@ -5,6 +5,14 @@ import linkedin from "/Linkedin.svg";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
+  const copyrightMessage = () => {
+    const copyright = String.fromCodePoint(0x00a9);
+    const year = "2024";
+    const companyName = "Hamza & Simon";
+
+    return <span>{`${copyright}  ${year} | ${companyName}`}</span>;
+  };
+
   return (
     <>
       {/* Footer Section */}
@@ -84,24 +92,20 @@ const Footer = () => {
               {/* Footer Upper Right Text Ends */}
               {/* Footer Upper Right Button */}
               <Button className="mt-8 bg-white text-background rounded-full pt-[35px] pb-[35px] pr-[108px] pl-[108px] bg-auto text-3xl font-bold hover:bg-black hover:text-white">
-                Get in touch
+                <a href="/contact">Get in touch</a>
               </Button>
             </div>
           </div>
           {/* Footer Upper Ends */}
           {/* Footer Lower */}
           <div className="h-[72px] bg-foreground shadow-custom rounded-2xl mt-[24px] flex justify-between pt-[20px] pb-[20px] pr-[32px] pl-[32px]">
-            <a href="/" className="text-white font-extrabold">
-              Hamza & Simon
+            <a href="/" className="text-white font-extrabold items-center flex">
+              <span>{copyrightMessage()}</span>
             </a>
             <div className="items-center flex">
               <a href="/Project" className="ml-[28px]">
                 {" "}
                 Projects
-              </a>
-              <a href="/Testimonial" className="ml-[28px]">
-                {" "}
-                Testimonials
               </a>
               <a href="/Contact" className="ml-[28px]">
                 {" "}

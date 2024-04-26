@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../src/components/ui/button";
 import { AiFillMail, AiFillPhone } from "react-icons/ai";
+import { useToast } from "@/components/ui/use-toast";
 
 function Contact() {
   // State for form fields
@@ -8,6 +9,7 @@ function Contact() {
   const [email, setEmail] = useState("");
   const [topic, setTopic] = useState("General Question");
   const [message, setMessage] = useState("");
+  const { toast } = useToast();
 
   // Handle input changes
   const handleInputChange = (setter) => (event) => {
@@ -29,7 +31,12 @@ function Contact() {
         body: JSON.stringify(formData),
       });
       if (!response.ok) throw new Error("Failed to send email");
-      alert("Message sent successfully!");
+      toast({
+        title: "Success",
+        description: "Your mail has been sent successfully. Thank you!",
+        status: "success",
+        variant: "default",
+      });
       // Optionally reset the form
       setFullName("");
       setEmail("");
@@ -37,7 +44,13 @@ function Contact() {
       setMessage("");
     } catch (error) {
       console.error("Error:", error);
-      alert("Error sending message.");
+
+      toast({
+        title: "Error",
+        description: "There was an error sending your mail. Try Again Later",
+        status: "error",
+        variant: "destructive",
+      });
     }
   };
 
@@ -50,14 +63,16 @@ function Contact() {
           {/* Mail */}
           <a
             className="bg-foreground p-8 rounded-lg flex items-center gap-4 shadow-custom max-w-[368px] justify-center"
-            href="mailto:hqures21@student.aau.dk"
+            href="hamza.simon.aau@gmail.com"
           >
-            <div className="bg-purple-600 p-3 rounded-full w-16 h-16 flex justify-center items-center">
+            <div className="bg-blue-600 rounded-full min-w-16 min-h-16 flex justify-center items-center">
               <AiFillMail />
             </div>
             <div className="ml-6">
               <div className="font-semibold text-white text-xl">Mail</div>
-              <div className="mt-2 text-zinc-500">hqures21@student.aau.dk</div>
+              <div className="mt-2 text-zinc-500 text-sm">
+                HamzaSimon@gmail.com
+              </div>
             </div>
           </a>
           {/* Call */}
@@ -65,12 +80,12 @@ function Contact() {
             className="bg-foreground p-8 rounded-lg flex items-center gap-4 shadow-custom max-w-[368px] justify-center"
             href="tel:+45 12 34 56 78"
           >
-            <div className="bg-orange-600 p-3 rounded-full w-16 h-16 flex justify-center items-center">
+            <div className="bg-green-600  rounded-full w-16 h-16 flex justify-center items-center">
               <AiFillPhone />
             </div>
             <div className="ml-6">
               <div className="font-semibold text-white text-xl">Call</div>
-              <div className="mt-2 text-zinc-500">+45 12 34 56 78</div>
+              <div className="mt-2 text-zinc-500 text-sm">+45 12 34 56 78</div>
             </div>
           </a>
         </div>
