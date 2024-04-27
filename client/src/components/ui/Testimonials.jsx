@@ -75,9 +75,9 @@ function Testimonials() {
   return (
     <>
       <section className="justify-center items-center flex-col pb-36 w-full">
-        <div className="max-w-[1355px] flex items-center justify-center pt-2 mx-auto">
-          <div className="bg-foreground max-w-[677px] max-h-[400px] rounded-lg pt-10 pb-5 flex-1 mr-2 justify-center items-center flex flex-col shadow-custom">
-            <h1 className="text-4xl font-bold text-white p-2 text-center">
+        <div className="max-w-[1355px] flex items-stretch  justify-center pt-2 mx-auto">
+          <div className="bg-foreground max-w-[677px] max-h-[500px] rounded-lg flex-1 mr-2 justify-center items-center flex flex-col shadow-custom pt-10 pb-10">
+            <h1 className="text-4xl font-bold text-white text-center">
               Our clients love us ❤️
             </h1>
 
@@ -100,7 +100,7 @@ function Testimonials() {
                         <p className="text-xl font bold text-slate-400">
                           {data.properties.Review.rich_text[0].plain_text}
                         </p>
-                        <h2 className="text-lg text-yellow-400">
+                        <h2 className="text-lg pt-2 text-customblue">
                           {data.properties.Name.title[0].plain_text}
                         </h2>
                       </CarouselItem>
@@ -114,8 +114,8 @@ function Testimonials() {
             </Carousel>
           </div>
 
-          <div className="bg-foreground max-w-[677px] max-h-[400px] rounded-lg pt-10 pb-10 ml-2 flex-1 justify-center items-center flex flex-col shadow-custom">
-            <div>
+          <div className="bg-foreground max-w-[677px] max-h-[500px] rounded-lg pt-10 pb-10 ml-2 flex-1 justify-center items-center flex flex-col shadow-custom">
+            <div className="w-[520px]">
               <h1 className="text-4xl font-bold text-white p-2 text-center">
                 Submit a review
               </h1>
@@ -131,8 +131,8 @@ function Testimonials() {
                   <input
                     type="text"
                     placeholder="John Doe"
-                    className="border p-2 rounded-sm text-black"
-                    value={name} // Bind state to the input
+                    className="border p-2 rounded-lg text-black"
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -141,18 +141,18 @@ function Testimonials() {
                   <p className="mb-2">Review</p>
                   <textarea
                     placeholder="They are awesome!!"
-                    className="border p-2 rounded-sm text-black text-sm"
-                    rows="2"
-                    value={review} // Bind state to the textarea
+                    className=" p-2 rounded-lg text-black shadow-custom text-sm"
+                    rows="6"
+                    value={review}
                     onChange={(e) => setReview(e.target.value)}
                   />
                 </div>
 
                 <Button
-                  className="self-end mt-2 rounded-lg bg-white text-black hover:bg-black hover:text-white"
+                  className="self-end mt-2 rounded-full bg-customblue text-white hover:bg-sky-700"
                   type="submit"
                 >
-                  Submit
+                  Submit Review →
                 </Button>
               </form>
             </div>

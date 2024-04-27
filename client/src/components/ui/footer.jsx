@@ -1,7 +1,9 @@
 import * as React from "react";
 import hamzaAvatar from "/hamza_avatar.svg";
+import hamzagithub from "/HamzaGithub.svg";
 import github from "/Github.svg";
 import linkedin from "/Linkedin.svg";
+import hamzalinkedin from "/hamzaLinkedin.svg";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
@@ -39,28 +41,28 @@ const Footer = () => {
               {/* Footer Upper Left Lower */}
               <div className="grid gap-x-6 gap-y-6 mt-6 grid-cols-4">
                 <a
-                  href=""
-                  className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom"
+                  href="https://github.com/Hamzamq4"
+                  className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom hover:border hover:border-customblue"
                 >
                   <img
-                    src={github}
+                    src={hamzagithub}
                     alt="Hamza Github"
                     className="max-w-[100%] align-middle inline-block"
                   />
                 </a>
                 <a
-                  href=""
-                  className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom"
+                  href="https://www.linkedin.com/in/hmqureshi/"
+                  className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom hover:border hover:border-customblue"
                 >
                   <img
-                    src={linkedin}
+                    src={hamzalinkedin}
                     alt="Hamza Linkedin"
                     className="max-w-[100%] align-middle inline-block"
                   />
                 </a>
                 <a
                   href=""
-                  className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom"
+                  className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom hover:border hover:border-customblue"
                 >
                   <img
                     src={github}
@@ -70,7 +72,7 @@ const Footer = () => {
                 </a>
                 <a
                   href=""
-                  className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom"
+                  className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom hover:border hover:border-customblue"
                 >
                   <img
                     src={linkedin}

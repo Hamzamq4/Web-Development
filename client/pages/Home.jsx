@@ -1,115 +1,84 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "../src/components/ui/button";
+import { Button } from "@/components/ui/button";
+import bgCircle from "/BG_Circle.svg";
+import heroPic from "/heroPic.png";
+import Timer from "@/components/ui/Timer";
 
-function Home() {
-  const deadline = new Date("June 28, 2024 00:00:00").getTime();
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+function RotatingImage({ src }) {
+  const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = deadline - now;
-
-      if (distance < 0) {
-        clearInterval(interval);
-      } else {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          ),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000),
-        });
-      }
-    }, 1000);
-
+      setRotation((prevRotation) => (prevRotation + 0.5) % 360); // Increment rotation
+    }, 35); // Rotate every 100 milliseconds
     return () => clearInterval(interval);
-  }, [deadline]);
+  }, []);
 
+  return (
+    <img
+      src={src}
+      className="max-w-[100%]"
+      style={{
+        transform: `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(${rotation}deg) skew(0deg, 0deg)`,
+        transformStyle: "preserve-3d",
+        willChange: "transform",
+      }}
+    />
+  );
+}
+function Home() {
   return (
     <>
       {/* Hero Section Start */}
       <section className=" justify-center items-center flex-col pb-36 w-full">
         {/* Hero Container Start */}
-        <div className=" max-w-[1355px] flex items-center justify-center pt-2 mx-auto">
+        <div className=" flex-wrap max-w-[1355px] flex items-stretch justify-center pt-2 mx-auto">
           {/* Hero Content 1 Start*/}
-          <div className="bg-foreground max-w-2xl rounded-3xl pt-36 pb-36 flex-1 mr-2 justify-center items-center flex flex-col shadow-custom">
-            <span className=" mb-5 p-2 bg-background rounded-xl">
-              <h2 className=" text-white text-sm ">Hamza & Simon</h2>
-            </span>
-            <h1 className="text-4xl font-bold text-white ">
-              Welcome to our website
-            </h1>
-            <p className="text-white mt-2 text-center">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-              voluptas voluptate quia autem, officia vel quidem, officiis
-              necessitatibus, fugit cumque doloremque.
-            </p>
-            <Button className="mt-5 bg-white text-black hover:bg-sky-700 hover:text-white">
-              {" "}
-              Read more
-            </Button>
+          <div className="bg-foreground max-w-2xl rounded-3xl pt-28 pb-28 pt flex-1 mr-2 justify-center items-center flex flex-col shadow-custom">
+            <div className="max-w-[396px] flex-1 relative">
+              {/* BG Circle*/}
+              <RotatingImage src={bgCircle} />
+              {/* Picture*/}
+              <img
+                src={heroPic}
+                className="max-w-[83%] absolute top-[8%] left-[8%] right-[0%] bottom-[0%]"
+              />
+            </div>
           </div>
           {/* Hero Content 1 End*/}
+          {/* ---------------------- */}
           {/* Hero Content 2 Start */}
-          <div className="max-w-2xl bg-foreground rounded-3xl pt-36 pb-36 flex-1 ml-2 justify-center items-center flex flex-col shadow-custom">
-            <span className=" mb-5 p-2 bg-background rounded-xl">
-              <h2 className=" text-white text-sm ">Hamza & Simon</h2>
-            </span>
-
-            <h1 className="font-bold text-white text-4xl ">
-              Welcome to our website
-            </h1>
-            <p className="text-white mt-2 text-center">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-              voluptas voluptate quia autem, officia vel quidem, officiis
-              necessitatibus, fugit cumque doloremque.
-            </p>
-            <Button className="mt-5 bg-white text-black hover:bg-sky-700 hover:text-white">
-              {" "}
-              Read more
-            </Button>
+          <div className="max-w-2xl bg-foreground rounded-3xl pt-28 pb-28 flex-1 ml-2 justify-center items-center flex flex-col shadow-custom">
+            {/* Tag Line */}
+            <div className="bg-black rounded-md shadow-custom px-3 pt-1 pb-1">
+              <span className="text-customblue font-bold"> MEDIALOGISTS</span>
+            </div>
+            {/* title */}
+            <div className="max-w-[514px] mt-5">
+              <span className="text-white font-bold tracking-tighter text-6xl leading-none self-center">
+                Media Engineers
+              </span>
+            </div>
+            {/* Description */}
+            <div className="max-w-[444px] mt-5 mb-7 item-center">
+              <div className="text-zinc-300 font-medium text-center">
+                Currently writing our bachelor thesis in Medialogy at Aalborg
+                University. We have already created wonderful solutions that
+                have had great impact. Check them out!
+              </div>
+            </div>
+            <div>
+              <a href="/Projects">
+                <Button className="mt-5 font-medium pt-6 pb-6 pl-5 pr-5 rounded-full text-xl bg-customblue text-white hover:bg-sky-700">
+                  See Our Projects →
+                </Button>
+              </a>
+            </div>
           </div>
           {/* Hero Content 2 End */}
         </div>
+        <Timer />
         {/* Hero Container End */}
-        {/* Graduation Timer */}
-        <div className="bg-foreground max-w-[1355px] mx-auto mt-4 rounded-3xl text-center font-bold text-white pt-6 pb-6 gap-2 shadow-custom flex flex-col items-center">
-          <span className="text-5xl mb-5">Graduation in</span>
-          <div className="flex flex-row justify-center items-center w-full px-6">
-            <div className="flex flex-col items-center flex-grow">
-              <span className="p-6 shadow-custom rounded-xl text-6xl ">
-                {timeLeft.days}
-              </span>
-              <span className="text-2xl">Days</span>
-            </div>
-            <div className="flex flex-col items-center flex-grow">
-              <span className="p-6 shadow-custom rounded-xl text-6xl">
-                {timeLeft.hours}
-              </span>
-              <span className="text-2xl">Hours</span>
-            </div>
-            <div className="flex flex-col items-center flex-grow">
-              <span className="p-6 shadow-custom rounded-xl text-6xl">
-                {timeLeft.minutes}
-              </span>
-              <span className="text-2xl">Minutes</span>
-            </div>
-            <div className="flex flex-col items-center flex-grow">
-              <span className="p-6 shadow-custom rounded-xl text-6xl">
-                {timeLeft.seconds}
-              </span>
-              <span className="text-2xl">Seconds</span>
-            </div>
-          </div>
-        </div>
-        {/* Graduation Timer End */}
       </section>
       {/* Hero Section End */}
     </>

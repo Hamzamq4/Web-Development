@@ -9,6 +9,9 @@ module.exports = {
   ],
   prefix: "",
   theme: {
+    fontFamily: {
+      sans: ["Poppins", "sans-serif"],
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -21,6 +24,7 @@ module.exports = {
         custom: "inset 0 1px 0 1px rgba(255, 255, 255, 0.06)",
       },
       colors: {
+        customblue: "#4382FB",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -74,9 +78,6 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-    },
-    fontFamily: {
-      sans: ["Poppins", "sans-serif"],
     },
   },
   plugins: [require("tailwindcss-animate")],
