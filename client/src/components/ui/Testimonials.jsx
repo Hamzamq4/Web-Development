@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Carousel, IconButton } from "@material-tailwind/react";
 import Axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
+import heroPic from "/heroPic.png";
+import { space } from "postcss/lib/list";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 function Testimonials() {
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
   const [APIData, setAPIData] = useState([]);
-  const [showAPIData, setShowAPIData] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!name.trim() || !review.trim()) {
       toast({
         title: "Error",
@@ -30,12 +25,8 @@ function Testimonials() {
       return;
     }
 
-    Axios.post("http://localhost:8000/Post", {
-      Name: name,
-      Review: review,
-    })
+    Axios.post("http://localhost:8000/Post", { Name: name, Review: review })
       .then(() => {
-        console.log("Success");
         toast({
           title: "Success",
           description:
@@ -47,7 +38,6 @@ function Testimonials() {
         setReview("");
       })
       .catch((error) => {
-        console.error(error);
         toast({
           title: "Error",
           description: "Failed to submit the review.",
@@ -57,65 +47,92 @@ function Testimonials() {
       });
   };
 
-  const fetchAndDisplayAPIData = () => {
+  useEffect(() => {
     Axios.get("http://localhost:8000/Testimonials")
       .then((response) => {
         setAPIData(response.data.results);
-        setShowAPIData(true);
       })
       .catch((error) => {
         console.error(error);
       });
-  };
-
-  useEffect(() => {
-    fetchAndDisplayAPIData();
   }, []);
 
   return (
     <>
       <section className="justify-center items-center flex-col pb-36 w-full">
-        <div className="max-w-[1355px] flex items-stretch  justify-center pt-2 mx-auto">
-          <div className="bg-foreground max-w-[677px] max-h-[500px] rounded-lg flex-1 mr-2 justify-center items-center flex flex-col shadow-custom pt-10 pb-10">
-            <h1 className="text-4xl font-bold text-white text-center">
-              Our clients love us ❤️
-            </h1>
-
+        <div className="max-w-[1355px] flex items-stretch justify-center pt-2 mx-auto">
+          <div className="bg-foreground max-w-[677px] rounded-lg flex-1 mx-[24px] px-12 pt-10 pb-8 shadow-custom">
             <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              orientation="horizontal"
-              className=" max-w-[650px] mx-auto p-10"
+              className="h-full w-full"
+              prevArrow={({ handlePrev }) => (
+                <IconButton
+                  variant="text"
+                  color="white"
+                  size="sm"
+                  onClick={handlePrev}
+                  className="absolute bottom-1 left-4  z-[52] flex mt-3 mb-3"
+                ></IconButton>
+              )}
+              nextArrow={({ handleNext }) => (
+                <IconButton
+                  variant="text"
+                  color="white"
+                  size="sm"
+                  onClick={handleNext}
+                  className="absolute bottom-1 right-4 z-[52] flex mt-3 mb-3"
+                ></IconButton>
+              )}
+              autoplay={true}
+              loop={true}
+              navigation={({ setActiveIndex, activeIndex, length }) => (
+                <div className="absolute bottom-5 left-2/4 z-50 flex items-center -translate-x-2/4 gap-2 mt-3 mb-3">
+                  {new Array(length).fill("").map((_, i) => (
+                    <span
+                      key={i}
+                      className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                        activeIndex === i
+                          ? "w-8 bg-customblue"
+                          : "w-4 bg-white/50"
+                      }`}
+                      onClick={() => setActiveIndex(i)}
+                    />
+                  ))}
+                </div>
+              )}
             >
-              <CarouselContent>
-                {APIData.map((data) => {
-                  if (
-                    data.properties.Name.title.length > 0 &&
-                    data.properties.Review.rich_text.length > 0
-                  ) {
-                    return (
-                      <CarouselItem key={data.id} className="text-black">
-                        <p className="text-xl font bold text-slate-400">
-                          {data.properties.Review.rich_text[0].plain_text}
-                        </p>
-                        <h2 className="text-lg pt-2 text-customblue">
-                          {data.properties.Name.title[0].plain_text}
-                        </h2>
-                      </CarouselItem>
-                    );
-                  }
-                  return null;
-                })}
-              </CarouselContent>
-              <CarouselPrevious className="ml-12" />
-              <CarouselNext className="mr-12" />
+              {APIData.map((data, index) => (
+                <div key={index} className="pb-20 relative">
+                  <div className="text-white text-[18px] font-[400] leading-8 pb-4 pt-4  w-[100%] flex flex-1 flex-col justify-center items-center self-center overflow-hidden">
+                    {data.properties.Review.rich_text[0].plain_text}
+                  </div>
+
+                  <div className="border-t border-white/50 mt-2 pt-3 ">
+                    <div className="justify-start items-center flex">
+                      <div className="mr-4">
+                        <img
+                          src={
+                            data.properties.Image.files[0].file.url
+                              ? data.properties.Image.files[0].file.url
+                              : heroPic
+                          }
+                          alt="User Image"
+                          className="rounded-full border border-customblue w-14 h-14 align-middle inline-block object-cover"
+                        />
+                      </div>
+                      <div>
+                        <div>{data.properties.Name.title[0].plain_text}</div>
+                        <div className="mt-1 text-white/50">
+                          {data.properties.Position.rich_text[0].plain_text}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </Carousel>
           </div>
-
-          <div className="bg-foreground max-w-[677px] max-h-[500px] rounded-lg pt-10 pb-10 ml-2 flex-1 justify-center items-center flex flex-col shadow-custom">
-            <div className="w-[520px]">
+          <div className="bg-foreground max-w-[677px] rounded-lg pt-10 pb-10 ml-2 flex-1 justify-center items-center flex flex-col shadow-custom">
+            <div className="w-full items-center justify-center flex flex-1 flex-col">
               <h1 className="text-4xl font-bold text-white p-2 text-center">
                 Submit a review
               </h1>
@@ -123,7 +140,7 @@ function Testimonials() {
                 We'd love to hear from you
               </p>
               <form
-                className="mt-2 w-full flex flex-col"
+                className="mt-2 w-[90%] flex flex-col self-center"
                 onSubmit={handleSubmit}
               >
                 <div className="flex flex-col mb-4">
@@ -131,7 +148,7 @@ function Testimonials() {
                   <input
                     type="text"
                     placeholder="John Doe"
-                    className="border p-2 rounded-lg text-black"
+                    className="p-2 rounded-lg text-black"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
