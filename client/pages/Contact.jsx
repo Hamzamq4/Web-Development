@@ -6,6 +6,7 @@ import { AiFillPushpin } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaBuilding } from "react-icons/fa6";
 import { FaSchool } from "react-icons/fa6";
+import aau from "/AAU.png";
 
 function Contact() {
   // State for form fields
@@ -109,6 +110,8 @@ function Contact() {
                   className="bg-zinc-800 p-4 rounded-lg"
                   value={fullName}
                   onChange={handleInputChange(setFullName)}
+                  id="fullName"
+                  autoComplete="name"
                 />
               </div>
               <div className="flex flex-col mb-2">
@@ -119,6 +122,8 @@ function Contact() {
                   className="bg-zinc-800 p-4 rounded-lg"
                   value={email}
                   onChange={handleInputChange(setEmail)}
+                  id="email"
+                  autoComplete="email"
                 />
               </div>
               <div className="flex flex-col mb-2 col-span-2">
@@ -127,6 +132,7 @@ function Contact() {
                   className="bg-zinc-800 p-4 rounded-lg"
                   value={topic}
                   onChange={handleInputChange(setTopic)}
+                  id="topic"
                 >
                   <option>General Question</option>
                   <option>Academic Question</option>
@@ -141,6 +147,7 @@ function Contact() {
                   className="bg-zinc-800 p-4 rounded-lg"
                   value={message}
                   onChange={handleInputChange(setMessage)}
+                  id="message"
                 ></textarea>
               </div>
               <Button
@@ -226,15 +233,7 @@ function Contact() {
             </a>
           </div>
           <div className="rounded-2xl mt-6">
-            <iframe
-              id="gmap_canvas"
-              src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=Frederikskaj%2012%20Copenhagen+(Aalborg%20University)&amp;t=p&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-              className="w-full h-[400px] rounded-lg"
-            ></iframe>
-            <script
-              type="text/javascript"
-              src="https://embedmaps.com/google-maps-authorization/script.js?id=b4c3b81a7d297de5936fd16dc5f8f56edfb1de39"
-            ></script>
+            <img src={aau} className="w-full h-[400px] rounded-lg" />
           </div>
         </div>
       </section>

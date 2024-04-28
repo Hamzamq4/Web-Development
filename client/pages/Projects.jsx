@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Popup from "@/components/ui/popup";
-import viteLogo from "/vite.svg";
-import { AiFillCaretRight } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 function Projects() {

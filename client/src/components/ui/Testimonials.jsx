@@ -4,8 +4,6 @@ import Axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import heroPic from "/heroPic.png";
-import { space } from "postcss/lib/list";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 function Testimonials() {
   const [name, setName] = useState("");
@@ -71,7 +69,9 @@ function Testimonials() {
                   size="sm"
                   onClick={handlePrev}
                   className="absolute bottom-1 left-4  z-[52] flex mt-3 mb-3"
-                ></IconButton>
+                >
+                  <></>
+                </IconButton>
               )}
               nextArrow={({ handleNext }) => (
                 <IconButton
@@ -80,7 +80,9 @@ function Testimonials() {
                   size="sm"
                   onClick={handleNext}
                   className="absolute bottom-1 right-4 z-[52] flex mt-3 mb-3"
-                ></IconButton>
+                >
+                  <></>
+                </IconButton>
               )}
               autoplay={true}
               loop={true}
@@ -142,6 +144,7 @@ function Testimonials() {
               <form
                 className="mt-2 w-[90%] flex flex-col self-center"
                 onSubmit={handleSubmit}
+                id="form"
               >
                 <div className="flex flex-col mb-4">
                   <p className="mb-2">Name</p>
@@ -151,6 +154,8 @@ function Testimonials() {
                     className="p-2 rounded-lg text-black"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    id="name"
+                    autoComplete="name"
                   />
                 </div>
 
@@ -162,6 +167,7 @@ function Testimonials() {
                     rows="6"
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
+                    id="review"
                   />
                 </div>
 
