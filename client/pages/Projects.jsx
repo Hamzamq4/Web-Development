@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import useFetchProjects from "@/API/fetchProjects";
 
 function Projects() {
-  const [APIData, setAPIData] = useState([]);
-  const [showAPIData, setShowAPIData] = useState(false);
-  const [popup, setPopup] = useState(null);
+  const { APIData, showAPIData } = useFetchProjects();
 
-  const fetchAndDisplayAPIData = () => {
-    Axios.get("http://localhost:8000/Projects")
-      .then((response) => {
-        console.log(response.data.results);
-        setAPIData(response.data.results);
-        setShowAPIData(true);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  useEffect(() => {
-    fetchAndDisplayAPIData();
-  }, []);
+  if (!showAPIData)
+    return (
+      <div className="flex justify-center items-center w-screen h-screen">
+        <div className="w-52 h-52 border-8 border-customblue border-dashed rounded-full animate-spin"></div>
+      </div>
+    );
 
   return (
     <>

@@ -22,6 +22,15 @@ module.exports = withMT({
       },
     },
     extend: {
+      animation: {
+        spin: "spin 1s linear infinite",
+      },
+      keyframes: {
+        spin: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+      },
       boxShadow: {
         custom: "inset 0 1px 0 1px rgba(255, 255, 255, 0.06)",
       },

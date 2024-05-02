@@ -105,12 +105,13 @@ const Footer = () => {
               <span>{copyrightMessage()}</span>
             </a>
             <div className="items-center flex">
+              <a href="/About" className="ml-[28px]">
+                About
+              </a>
               <a href="/Project" className="ml-[28px]">
-                {" "}
                 Projects
               </a>
               <a href="/Contact" className="ml-[28px]">
-                {" "}
                 Contact
               </a>
             </div>

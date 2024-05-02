@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Axios from "axios";
+import useProjectDetails from "@/API/useProjectDetails";
 
 function ProjectDetails() {
-  const { projectId } = useParams();
-  const [projectData, setProjectData] = useState(null);
-
-  useEffect(() => {
-    Axios.get("http://localhost:8000/Projects")
-      .then((response) => {
-        const projects = response.data.results;
-        const specificProject = projects.find(
-          (project) => project.id === projectId
-        );
-        setProjectData(specificProject);
-      })
-      .catch((error) => console.error("Error fetching project data:", error));
-  }, [projectId]);
+  const projectData = useProjectDetails();
 
   if (!projectData)
     return (
-      <div className="h-screen w-screen flex justify-center items-center font-bold text-5xl">
-        Loading...
+      <div className="flex justify-center items-center w-screen h-screen">
+        <div className="w-52 h-52 border-8 border-customblue border-dashed rounded-full animate-spin"></div>
       </div>
     );
 

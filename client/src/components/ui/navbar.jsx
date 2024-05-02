@@ -6,8 +6,8 @@ import {
   AiFillFolder,
   AiFillHome,
   AiFillMail,
-  AiFillLike,
 } from "react-icons/ai";
+import { RiGroup2Fill } from "react-icons/ri";
 
 const Navbar = () => {
   // State to manage the navbar's visibility
@@ -20,8 +20,14 @@ const Navbar = () => {
   // Array containing navigation items
   const navItems = [
     { id: 1, text: "Home", href: "/", icon: <AiFillHome /> },
-    { id: 2, text: "Projects", href: "/projects", icon: <AiFillFolder /> },
-    { id: 3, text: "Contact", href: "/contact", icon: <AiFillMail /> },
+    {
+      id: 2,
+      text: "About",
+      href: "/about",
+      icon: <RiGroup2Fill />,
+    },
+    { id: 3, text: "Projects", href: "/projects", icon: <AiFillFolder /> },
+    { id: 4, text: "Contact", href: "/contact", icon: <AiFillMail /> },
   ];
 
   return (
