@@ -80,7 +80,7 @@ function ProjectDetails() {
           </div>
           {/* Info Boxes Ends */}
 
-          <div className="mt-[100px] text-lg font-normal text-white/50">
+          <div className="mt-[100px] text-lg font-normal text-white/65s">
             {projectData.properties.LongSum.rich_text[0].plain_text}
           </div>
         </div>
