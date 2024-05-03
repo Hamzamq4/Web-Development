@@ -23,7 +23,7 @@ function ProjectDetails() {
                 {projectData.properties.Tags.multi_select.map((tag) => (
                   <div
                     key={tag.id}
-                    className=" flex-wrap gap-x-3 gap-y-4 mt-[24px] shadow-custom bg-white px-4 py-2 font-bold rounded-lg flex items-center justify-center text-sm text-black whitespace-nowrap"
+                    className=" flex-wrap gap-x-3 gap-y-4 mt-[24px] border border-customblue px-4 py-2 font-bold rounded-lg flex items-center justify-center text-sm text-white whitespace-nowrap"
                   >
                     {tag.name}
                   </div>
@@ -80,14 +80,11 @@ function ProjectDetails() {
           </div>
           {/* Info Boxes Ends */}
 
-          <div className="mt-[100px] text-slate-400 line text-lg font-normal">
+          <div className="mt-[100px] text-lg font-normal text-white/50">
             {projectData.properties.LongSum.rich_text[0].plain_text}
           </div>
         </div>
         {/* Hero Container ends */}
-
-        {/* <h1>{projectData.properties.ProjectName.title[0].plain_text}</h1>
-        <p>{projectData.properties.LongSum.rich_text[0].plain_text}</p> */}
       </section>
     </>
   );

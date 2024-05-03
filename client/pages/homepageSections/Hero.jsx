@@ -69,7 +69,7 @@ function Hero() {
             </div>
             <div>
               <a href="/Projects">
-                <Button className="mt-5 font-medium pt-6 pb-6 pl-5 pr-5 rounded-full text-xl bg-customblue text-white hover:bg-sky-700">
+                <Button className="mt-5 font-medium pt-6 pb-6 pl-5 pr-5 rounded-full text-xl bg-customblue text-white hover:hover:bg-customblue/60">
                   See Our Projects →
                 </Button>
               </a>

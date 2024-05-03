@@ -4,9 +4,10 @@ import Axios from "axios";
 const useFetchProjects = () => {
   const [APIData, setAPIData] = useState([]);
   const [showAPIData, setShowAPIData] = useState(false);
+  const fetchProjectsUrl = import.meta.env.VITE_FETCH_PROJECTS;
 
   const fetchAndDisplayAPIData = () => {
-    Axios.get("http://localhost:8000/Projects")
+    Axios.get(fetchProjectsUrl)
       .then((response) => {
         console.log(response.data.results);
         setAPIData(response.data.results);

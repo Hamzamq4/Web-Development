@@ -8,7 +8,24 @@ require("dotenv").config();
 
 const port = process.env.PORT || 8000;
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (process.env.NODE_ENV === "development") {
+      if (origin === process.env.LOCAL_URL) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not Allowed"));
+      }
+    } else {
+      if (origin === process.env.PRODUCTION_URL) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not Allowed"));
+      }
+    }
+  },
+};
+app.use(cors(corsOptions));
 
 const authToken = process.env.SECRET_KEY;
 const web_Testimonials = process.env.TESTIMONIALS;
@@ -50,13 +67,14 @@ app.post("/sendEmail", jsonParser, async (req, res) => {
 });
 
 app.post("/Post", jsonParser, async (req, res) => {
-  const { Name, Review } = req.body;
+  const { Name, Position, Review } = req.body;
   try {
     const response = await notion.pages.create({
       parent: { database_id: web_Testimonials },
       properties: {
         Name: { title: [{ text: { content: Name } }] },
         Review: { rich_text: [{ text: { content: Review } }] },
+        Position: { rich_text: [{ text: { content: Position } }] },
       },
     });
     res.send(response);

@@ -5,10 +5,14 @@ import { useToast } from "@/components/ui/use-toast";
 
 const useSubmitReview = () => {
   const [name, setName] = useState("");
+  const [position, setPosition] = useState("");
   const [review, setReview] = useState("");
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const submitTestimonialUrl = import.meta.env.VITE_SUBMIT_TESTIMONIAL;
 
   const handleSubmit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
     if (!name.trim() || !review.trim()) {
       toast({
@@ -20,8 +24,13 @@ const useSubmitReview = () => {
       return;
     }
 
-    Axios.post("http://localhost:8000/Post", { Name: name, Review: review })
+    Axios.post(submitTestimonialUrl, {
+      Name: name,
+      Position: position,
+      Review: review,
+    })
       .then(() => {
+        setIsLoading(false);
         toast({
           title: "Success",
           description:
@@ -31,6 +40,7 @@ const useSubmitReview = () => {
         });
         setName("");
         setReview("");
+        setPosition("");
       })
       .catch((error) => {
         toast({
@@ -42,7 +52,16 @@ const useSubmitReview = () => {
       });
   };
 
-  return { name, setName, review, setReview, handleSubmit };
+  return {
+    name,
+    setName,
+    position,
+    setPosition,
+    review,
+    setReview,
+    handleSubmit,
+    isLoading,
+  };
 };
 
 export default useSubmitReview;

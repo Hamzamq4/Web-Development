@@ -4,9 +4,10 @@ import Axios from "axios";
 
 const useFetchTestimonials = () => {
   const [APIData, setAPIData] = useState([]);
+  const fetchTestimonialsUrl = import.meta.env.VITE_FETCH_TESTIMONIALS;
 
   useEffect(() => {
-    Axios.get("http://localhost:8000/Testimonials")
+    Axios.get(fetchTestimonialsUrl)
       .then((response) => {
         setAPIData(response.data.results);
       })

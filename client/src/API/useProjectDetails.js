@@ -6,9 +6,10 @@ import Axios from "axios";
 function useProjectDetails() {
   const { projectId } = useParams();
   const [projectData, setProjectData] = useState(null);
+  const fetchProjectsUrl = import.meta.env.VITE_FETCH_PROJECTS;
 
   useEffect(() => {
-    Axios.get(`http://localhost:8000/Projects`)
+    Axios.get(fetchProjectsUrl)
       .then((response) => {
         const projects = response.data.results;
         const specificProject = projects.find(

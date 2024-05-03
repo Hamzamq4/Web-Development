@@ -24,12 +24,12 @@ function Overview() {
           {/* Body text */}
           <div className="max-w-[624px]">
             <div className="text-[50px] leading-[64px] font-medium tracking-[-.64px]">
-              Pioneering Excellence in Medialogy
-              <span className="text-white/50"> since 2021</span>
+              Achieving <span className="text-customblue"> Excellence</span> in
+              Medialogy since 2021
             </div>
           </div>
           {/* Main */}
-          <div className="grid grid-cols-2 gap-x-6 gap-y-4 mt-14 auto-cols-fr">
+          <div className="grid grid-cols-2 gap-x-2 gap-y-4 mt-14 auto-cols-fr">
             {/* Col 1 */}
             <div>
               <div className="bg-foreground rounded-xl px-10 pb-10 pt-[30px] shadow-custom">
@@ -47,7 +47,7 @@ function Overview() {
                         {/* parent 1 */}
                         <div className="grid grid-cols-3 gap-4 border-b border-white/15 justify-between pt-5 pb-5 auto-cols-fr">
                           {/* item 1 */}
-                          <div className=" flex items-center">
+                          <div className=" flex items-center  ml-0 mr-0">
                             <div>
                               <img
                                 src={heroPic}
@@ -56,13 +56,13 @@ function Overview() {
                             </div>
                             <div className="ml-4">
                               <div className=" text-[16px] font-medium leading-[24px] block">
-                                Panda's Fonologiske Lege
+                                Phonological Awareness
                               </div>
                             </div>
                           </div>
                           {/* item 2 */}
 
-                          <div className="flex items-center ml-0 mr-0">
+                          <div className="flex items-center ml-0 mr-0 ">
                             <div className="w-2 h-2 bg-white rounded-full flex-shrink-0 mr-4"></div>
                             <div>
                               <div className="text-white text-sm font-normal">
@@ -71,7 +71,7 @@ function Overview() {
                             </div>
                           </div>
                           {/* item 3 */}
-                          <div className="flex items-center ml-0 mr-0">
+                          <div className="flex items-center ml-0 mr-0 ">
                             <div className="text-white font-normal text-sm">
                               FEB 2024 - JUN 2024
                             </div>
@@ -81,7 +81,7 @@ function Overview() {
                         {/* parent 2 */}
                         <div className="grid grid-cols-3 gap-4 border-b border-white/15 justify-between pt-5 pb-5 auto-cols-fr">
                           {/* item 1 */}
-                          <div className=" flex items-center">
+                          <div className=" flex items-center ">
                             <div>
                               <img
                                 src={heroPic}
@@ -95,7 +95,7 @@ function Overview() {
                             </div>
                           </div>
 
-                          <div className="flex items-center ml-0 mr-0">
+                          <div className="flex items-center ml-0 mr-0 ">
                             <div className="w-2 h-2 bg-white rounded-full flex-shrink-0 mr-4"></div>
                             <div>
                               <div className="text-white text-sm font-normal">
@@ -104,7 +104,7 @@ function Overview() {
                             </div>
                           </div>
                           {/* item 3 */}
-                          <div className="flex items-center ml-0 mr-0">
+                          <div className="flex items-center ml-0 mr-0 ">
                             <div className="text-white font-normal text-sm">
                               SEP 2023 - JAN 2024
                             </div>
@@ -113,7 +113,7 @@ function Overview() {
                         {/* parent 3 */}
                         <div className="grid grid-cols-3 gap-4 border-b border-white/15 justify-between pt-5 pb-5 auto-cols-fr">
                           {/* item 1 */}
-                          <div className=" flex items-center">
+                          <div className=" flex items-center ">
                             <div>
                               <img
                                 src={heroPic}
@@ -128,7 +128,7 @@ function Overview() {
                           </div>
                           {/* item 2 */}
 
-                          <div className="flex items-center ml-0 mr-0">
+                          <div className="flex items-center ml-0 mr-0 ">
                             <div className="w-2 h-2 bg-white rounded-full flex-shrink-0 mr-4"></div>
                             <div>
                               <div className="text-white text-sm font-normal">
@@ -137,7 +137,7 @@ function Overview() {
                             </div>
                           </div>
                           {/* item 3 */}
-                          <div className="flex items-center ml-0 mr-0">
+                          <div className="flex items-center ml-0 mr-0 ">
                             <div className="text-white font-normal text-sm">
                               SEP 2023 - JAN 2024
                             </div>
@@ -146,7 +146,7 @@ function Overview() {
                         {/* parent 4 */}
                         <div className="grid grid-cols-3 gap-4 border-b border-white/15 justify-between pt-5 pb-5 auto-cols-fr">
                           {/* item 1 */}
-                          <div className=" flex items-center">
+                          <div className=" flex items-center ">
                             <div>
                               <img
                                 src={heroPic}
@@ -161,7 +161,7 @@ function Overview() {
                           </div>
                           {/* item 2 */}
 
-                          <div className="flex items-center ml-0 mr-0">
+                          <div className="flex items-center ml-0 mr-0 ">
                             <div className="w-2 h-2 bg-white rounded-full flex-shrink-0 mr-4"></div>
                             <div>
                               <div className="text-white text-sm font-normal">
@@ -170,7 +170,7 @@ function Overview() {
                             </div>
                           </div>
                           {/* item 3 */}
-                          <div className="flex items-center ml-0 mr-0">
+                          <div className="flex items-center ml-0 mr-0 ">
                             <div className="text-white font-normal text-sm">
                               SEP 2023 - JAN 2024
                             </div>
@@ -180,7 +180,7 @@ function Overview() {
                         {/* parent 5 */}
                         <div className="grid grid-cols-3 gap-4 border-b border-white/15 justify-between pt-5 pb-5 auto-cols-fr">
                           {/* item 1 */}
-                          <div className=" flex items-center">
+                          <div className=" flex items-center ">
                             <div>
                               <img
                                 src={heroPic}
@@ -194,7 +194,7 @@ function Overview() {
                             </div>
                           </div>
                           {/* item 2 */}
-                          <div className="flex items-center ml-0 mr-0">
+                          <div className="flex items-center ml-0 mr-0 ">
                             <div className="w-2 h-2 bg-white rounded-full flex-shrink-0 mr-4"></div>
                             <div>
                               <div className="text-white text-sm font-normal">

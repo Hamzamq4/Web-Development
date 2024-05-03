@@ -93,7 +93,7 @@ const Footer = () => {
               </div>
               {/* Footer Upper Right Text Ends */}
               {/* Footer Upper Right Button */}
-              <Button className="mt-8 bg-white text-background rounded-full pt-[35px] pb-[35px] pr-[108px] pl-[108px] bg-auto text-3xl font-bold hover:bg-black hover:text-white">
+              <Button className="mt-8 bg-customblue text-white rounded-full pt-[35px] pb-[35px] pr-[108px] pl-[108px] bg-auto text-3xl font-bold hover:hover:bg-customblue/60">
                 <a href="/contact">Get in touch</a>
               </Button>
             </div>

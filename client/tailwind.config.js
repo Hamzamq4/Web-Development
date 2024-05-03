@@ -12,7 +12,7 @@ module.exports = withMT({
   prefix: "",
   theme: {
     fontFamily: {
-      sans: ["Poppins", "sans-serif"],
+      sans: ["Nunito", "sans-serif"],
     },
     container: {
       center: true,

@@ -16,12 +16,12 @@ function Projects() {
       <section className="justify-center items-center pt-[100px] pb-[200px] flex">
         <div className="max-w-[1355px] flex-1 ml-[40px] mr-[40px]">
           <div className="flex-col flex items-start">
-            <span className="mb-5 p-2 bg-foreground rounded-sm align-left">
-              <h2 className="text-yellow-400 text-sm font-bold">PROJECTS</h2>
+            <span className="mb-5 p-2 bg-foreground rounded-lg align-left shadow-custom">
+              <h2 className="text-customblue text-sm font-bold">Projects</h2>
             </span>
-            <h1 className="text-5xl font-bold">Some of our Projects</h1>
-            <span className="text-slate-400 text-xl">
-              that have already influenced a lot of people!
+            <h1 className="text-5xl font-bold">Take a look at our Projects</h1>
+            <span className="text-slate-400 text-xl mt-2">
+              Some of which have already influenced a lot of people positively!
             </span>
           </div>
 
@@ -64,7 +64,7 @@ function Projects() {
                         {data.properties.Tags.multi_select.map((tag) => (
                           <div
                             key={tag.id}
-                            className="shadow-custom bg-white px-4 py-2 font-bold rounded-lg flex items-center justify-center text-sm text-black whitespace-nowrap"
+                            className="border border-customblue bg-foreground/20 px-4 py-2 font-bold rounded-lg flex items-center justify-center text-sm text-white whitespace-nowrap hover:bg-customblue/65"
                           >
                             {tag.name}
                           </div>
@@ -88,7 +88,7 @@ function Projects() {
                             </div>
                           </div>
 
-                          <div className="w-12 h-12 bg-white rounded-full flex justify-center items-center absolute bottom-0 right-0 text-black hover:bg-black hover:text-white">
+                          <div className="w-12 h-12 bg-customblue rounded-full flex justify-center items-center absolute bottom-0 right-0 text-white hover:bg-customblue/65 hover:text-white">
                             <AiOutlineArrowRight />
                           </div>
                         </div>

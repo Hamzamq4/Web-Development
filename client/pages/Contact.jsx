@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "../src/components/ui/button";
 import { AiFillMail, AiFillPhone } from "react-icons/ai";
-import { useToast } from "@/components/ui/use-toast";
-import { AiFillPushpin } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaBuilding } from "react-icons/fa6";
 import { FaSchool } from "react-icons/fa6";
 import aau from "/AAU.png";
+import useSubmitContactForm from "@/API/useSubmitContactForm";
 
 function Contact() {
   // State for form fields
@@ -14,48 +13,21 @@ function Contact() {
   const [email, setEmail] = useState("");
   const [topic, setTopic] = useState("General Question");
   const [message, setMessage] = useState("");
-  const { toast } = useToast();
+  const { handleSubmit, isLoading } = useSubmitContactForm();
 
   // Handle input changes
   const handleInputChange = (setter) => (event) => {
     setter(event.target.value);
   };
 
-  // Handle form submission
-  const handleSubmit = async (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const formData = { fullName, email, topic, message };
-
-    // Post request to backend
-    try {
-      const response = await fetch("http://localhost:8000/sendEmail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      if (!response.ok) throw new Error("Failed to send email");
-      toast({
-        title: "Success",
-        description: "Your mail has been sent successfully. Thank you!",
-        status: "success",
-        variant: "default",
-      });
-      // Optionally reset the form
+    const isSubmitted = await handleSubmit({ fullName, email, topic, message });
+    if (isSubmitted) {
       setFullName("");
       setEmail("");
       setTopic("General Question");
       setMessage("");
-    } catch (error) {
-      console.error("Error:", error);
-
-      toast({
-        title: "Error",
-        description: "There was an error sending your mail. Try Again Later",
-        status: "error",
-        variant: "destructive",
-      });
     }
   };
 
@@ -101,13 +73,16 @@ function Contact() {
 
           <div className="mx-auto rounded-lg bg-foreground p-12 shadow-custom w-full">
             <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
-            <form className="grid grid-cols-2 gap-6" onSubmit={handleSubmit}>
+            <form
+              className="grid grid-cols-2 gap-6"
+              onSubmit={handleFormSubmit}
+            >
               <div className="flex flex-col mb-2">
                 <p className="mb-1">Full Name</p>
                 <input
                   type="text"
                   placeholder="John Appleseed"
-                  className="bg-zinc-800 p-4 rounded-lg"
+                  className="bg-zinc-800 p-4 rounded-lg  text-black"
                   value={fullName}
                   onChange={handleInputChange(setFullName)}
                   id="fullName"
@@ -119,7 +94,7 @@ function Contact() {
                 <input
                   type="email"
                   placeholder="johnappleseed@gmail.com"
-                  className="bg-zinc-800 p-4 rounded-lg"
+                  className="bg-zinc-800 p-4 rounded-lg  text-black"
                   value={email}
                   onChange={handleInputChange(setEmail)}
                   id="email"
@@ -129,7 +104,7 @@ function Contact() {
               <div className="flex flex-col mb-2 col-span-2">
                 <p className="mb-1">Topic</p>
                 <select
-                  className="bg-zinc-800 p-4 rounded-lg"
+                  className="bg-zinc-800 p-4 rounded-lg  text-black"
                   value={topic}
                   onChange={handleInputChange(setTopic)}
                   id="topic"
@@ -144,7 +119,7 @@ function Contact() {
                 <p className="mb-1">Message</p>
                 <textarea
                   placeholder="Type your message here"
-                  className="bg-zinc-800 p-4 rounded-lg"
+                  className="bg-zinc-800 p-4 rounded-lg text-black"
                   value={message}
                   onChange={handleInputChange(setMessage)}
                   id="message"
@@ -152,9 +127,10 @@ function Contact() {
               </div>
               <Button
                 type="submit"
-                className="bg-customblue p-4 rounded-lg col-span-2 hover:bg-sky-700 transition-colors"
+                className="bg-customblue p-4 rounded-lg col-span-2 hover:hover:bg-customblue/60 transition-colors"
+                disabled={isLoading}
               >
-                Send Message →
+                {isLoading ? "Sending..." : "Send Message →"}
               </Button>
             </form>
           </div>
