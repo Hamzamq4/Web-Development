@@ -28,7 +28,7 @@ function Testimonials() {
               <div className="text-customblue font-bold">Reviews</div>
             </div>
             <div className="mt-3 max-w-[624px]">
-              <div className="text-center text-5xl font-bold">
+              <div className="text-center text-5xl font-black">
                 Reviews on some of our{" "}
                 <span className="text-customblue">great work</span>
               </div>

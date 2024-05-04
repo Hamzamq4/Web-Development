@@ -34,12 +34,12 @@ function Selectedprojects() {
               {/* Heading */}
 
               <div className="static justify-center items-center pb-1 flex">
-                <div className="flex-col justify-center items-center flex">
+                <div className="flex-col justify-center items-center flex pb-2">
                   <div className="bg-foreground rounded-[6px] px-3 pb-1 pt-1 shadow-custom">
                     <span className="text-customblue font-bold ">Projects</span>
                   </div>
-                  <div className="mt-3 overflow-hidden">
-                    <div className="leading-[64px] text-[56px] font-[500]">
+                  <div className="mt-5 overflow-hidden">
+                    <div className="leading-[64px] text-[56px] font-black">
                       Selected <span className="text-customblue">Projects</span>
                     </div>
                   </div>
@@ -47,7 +47,7 @@ function Selectedprojects() {
               </div>
 
               {/* Sub Content */}
-              <div className="sticky justify-center items-center flex">
+              <div className="sticky justify-center items-center flex mt-14">
                 <div className="sticky origin-top  justify-center items-center">
                   <AnimatePresence>
                     {APIData.map((data, index) => {
@@ -57,11 +57,11 @@ function Selectedprojects() {
                         data.properties.Tags.multi_select.length > 0
                       ) {
                         return (
-                          <motion.div
+                          <motion.a
                             initial="initial"
                             whileInView="visible"
                             exit="exit"
-                            viewport={{ once: false, amount: 0.75 }}
+                            viewport={{ once: true, amount: 0.5 }}
                             variants={variants}
                             href={`/projects/${data.id}`}
                             key={data.id}
@@ -100,7 +100,7 @@ function Selectedprojects() {
                                 <AiOutlineArrowRight className=" rotate-[-45deg]" />
                               </motion.div>
                             </motion.div>
-                          </motion.div>
+                          </motion.a>
                         );
                       }
                     })}

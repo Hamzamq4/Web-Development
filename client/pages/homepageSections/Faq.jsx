@@ -7,6 +7,38 @@ import {
 } from "@/components/ui/accordion";
 
 function FAQ() {
+  const questionItems = [
+    {
+      id: 1,
+      value: "item-1",
+      trigger: "What is Medialogy",
+      content: "Content",
+    },
+    {
+      id: 2,
+      value: "item-2",
+      trigger: "What is Medialogy 2",
+      content: "Content",
+    },
+    {
+      id: 3,
+      value: "item-3",
+      trigger: "What is Medialogy 3",
+      content: "Content",
+    },
+    {
+      id: 4,
+      value: "item-4",
+      trigger: "What is Medialogy 4",
+      content: "Content",
+    },
+    {
+      id: 5,
+      value: "item-5",
+      trigger: "What is Medialogy 5",
+      content: "Content",
+    },
+  ];
   return (
     <>
       <section className="justify-center items-center w-full flex pb-[200px]">
@@ -18,40 +50,26 @@ function FAQ() {
               </div>
             </div>
 
-            <div className="text-[50px] leading-[64px] font-medium tracking-[-.64px]">
+            <div className="text-[50px] leading-[64px] font-black tracking-[-.64px] mt-5">
               Frequently Asked{" "}
               <span className="text-customblue">Questions </span>
             </div>
           </div>
-          <div className="mt-14 w-full">
+          <div className="mt-7 w-full">
             <div className="h-auto max-w-[758px] flex-col justify-start items-start flex ">
-              <Accordion type="single" collapsible className="w-full ">
-                <AccordionItem value="item-1" className="mt-3 mb-3">
-                  <AccordionTrigger>What is Medialogy</AccordionTrigger>
-                  <AccordionContent>
-                    Medialogy is a study program that combines technology and
-                    problem based learning.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2" className="mt-3 mb-3">
-                  <AccordionTrigger>How have you</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3" className="mt-3 mb-3">
-                  <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-4" className="mt-3 mb-3">
-                  <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              {questionItems.map((item) => (
+                <Accordion
+                  key={item.id}
+                  type="single"
+                  collapsible
+                  className="w-full "
+                >
+                  <AccordionItem value={item.value} className="mt-3 mb-3">
+                    <AccordionTrigger>{item.trigger}</AccordionTrigger>
+                    <AccordionContent>{item.content}</AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              ))}
             </div>
           </div>
         </div>

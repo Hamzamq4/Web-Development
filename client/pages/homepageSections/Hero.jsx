@@ -11,7 +11,7 @@ function RotatingImage({ src }) {
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setRotation((prevRotation) => (prevRotation + 0.5) % 360);
+      setRotation((prevRotation) => (prevRotation + 0.15) % 360);
     }, 35);
     return () => clearInterval(interval);
   }, []);

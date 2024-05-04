@@ -11,7 +11,7 @@ module.exports = withMT({
   ],
   theme: {
     fontFamily: {
-      sans: ["Nunito", "sans-serif"],
+      sans: ["Roboto", "sans-serif"],
     },
     container: {
       center: true,

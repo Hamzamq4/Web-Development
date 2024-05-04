@@ -33,25 +33,39 @@ function Timer() {
 
   return (
     <>
-      {/* Graduation Timer */}
-      <div className="bg-foreground max-w-[1355px] mx-auto mt-4 rounded-3xl text-center font-bold text-white pt-6 pb-6 gap-1 shadow-custom flex flex-col items-center">
-        <span className="text-2xl mb-2 ">Time Left Till Graduation 🥳</span>
-        <div className="flex flex-row justify-center items-center w-[80%] px-6">
+      {/* <div className="max-w-[1355px] mx-auto mt-4 text-center font-black flex justify-center items-center">
+        <span className="text-5xl font-black p-5 ">
+          Time Left Till Graduation 🥳
+        </span>
+      </div> */}
+      <div className="bg-foreground max-w-[1355px] mx-auto mt-4 rounded-3xl text-center font-bold text-white pt-5 pb-5 shadow-custom flex flex-col items-center">
+        <div className="flex flex-row justify-center items-center w-[90%] px-6">
+          <span className="text-3xl font-black text-start mr-20">
+            Time Left Till Graduation 🥳
+          </span>
           <div className="flex flex-col items-center flex-grow">
-            <span className="p-3 rounded-xl text-4xl ">{timeLeft.days}</span>
-            <span className="text-xl">Days</span>
+            <div className="p-3">
+              <span className=" text-4xl">{timeLeft.days} </span>
+              <span className="text-xl">Days</span>
+            </div>
           </div>
           <div className="flex flex-col items-center flex-grow">
-            <span className="p-3  rounded-xl text-4xl">{timeLeft.hours}</span>
-            <span className="text-xl">Hours</span>
+            <div className="p-3">
+              <span className="text-4xl">{timeLeft.hours} </span>
+              <span className="text-xl">Hours</span>
+            </div>
           </div>
           <div className="flex flex-col items-center flex-grow">
-            <span className="p-3 rounded-xl text-4xl">{timeLeft.minutes}</span>
-            <span className="text-xl">Minutes</span>
+            <div className="p-3">
+              <span className="text-4xl"> {timeLeft.minutes} </span>
+              <span className="text-xl">Min</span>
+            </div>
           </div>
           <div className="flex flex-col items-center flex-grow">
-            <span className="p-3  rounded-xl text-4xl">{timeLeft.seconds}</span>
-            <span className="text-xl">Seconds</span>
+            <div className="p-3">
+              <span className="text-4xl">{timeLeft.seconds} </span>
+              <span className="text-xl">Sec</span>
+            </div>
           </div>
         </div>
       </div>

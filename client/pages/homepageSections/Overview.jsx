@@ -23,7 +23,7 @@ function Overview() {
           </div>
           {/* Body text */}
           <div className="max-w-[624px]">
-            <div className="text-[50px] leading-[64px] font-medium tracking-[-.64px]">
+            <div className="text-[50px] leading-[64px] font-black tracking-[-.64px]">
               Achieving <span className="text-customblue"> Excellence</span> in
               Medialogy since 2021
             </div>
