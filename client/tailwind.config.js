@@ -11,7 +11,7 @@ module.exports = withMT({
   ],
   theme: {
     fontFamily: {
-      sans: ["Roboto", "sans-serif"],
+      sans: ["Inter", "sans-serif"],
     },
     container: {
       center: true,
