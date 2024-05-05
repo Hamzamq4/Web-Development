@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import useFetchProjects from "@/API/fetchProjects";
-import { motion, AnimatePresence } from "framer-motion";
+import useFetchProjects from "@/API/useFetchProjects";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 function Selectedprojects() {
   const { APIData } = useFetchProjects();
 

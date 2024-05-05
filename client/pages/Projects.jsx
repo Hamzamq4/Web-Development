@@ -1,5 +1,5 @@
 import { AiOutlineArrowRight } from "react-icons/ai";
-import useFetchProjects from "@/API/fetchProjects";
+import useFetchProjects from "@/API/useFetchProjects";
 
 function Projects() {
   const { APIData, showAPIData } = useFetchProjects();
