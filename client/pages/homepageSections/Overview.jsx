@@ -5,7 +5,7 @@ import figma from "/Figma.png";
 import unity from "/Unity.png";
 import python from "/Python.png";
 import csharp from "/CSharp.png";
-import testimage from "/testImage.jpeg";
+import collectivePic from "/collectivePic.png";
 
 function Overview() {
   return (
@@ -213,7 +213,66 @@ function Overview() {
                       </div>
                     </TabsContent>
                     <TabsContent value="funFacts">
-                      Find nogle fun facts habibi
+                      {/* parent 1 */}
+                      <div className="border-b border-white/15 justify-between pt-5 pb-5">
+                        <div className=" flex items-center ">
+                          <div className="ml-4">
+                            <div className=" text-[13px] font-medium leading-[24px] block">
+                              Hamza and Simon have a fierce compeition ongoing
+                              in Table Tennis.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* parent 2 */}
+                      <div className="border-b border-white/15 justify-between pt-5 pb-5">
+                        <div className=" flex items-center ">
+                          <div className="ml-4">
+                            <div className=" text-[13px] font-medium leading-[24px] block">
+                              Hamza and Simon are Real Madrid and FC Barcelona
+                              fans respectively. Naturally this means intense
+                              debates
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* parent 3 */}
+                      <div className="border-b border-white/15 justify-between pt-5 pb-5 ">
+                        <div className=" flex items-center ">
+                          <div className="ml-4">
+                            <div className=" text-[13px] font-medium leading-[24px] block">
+                              When in work mode, Hamza and Simon have a work
+                              accent - which both acknowledges to be very
+                              effective {"(and funny)"}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* parent 4 */}
+                      <div className="border-b border-white/15 justify-between pt-5 pb-5">
+                        <div className=" flex items-center ">
+                          <div className="ml-4">
+                            <div className=" text-[13px] font-medium leading-[24px] block">
+                              The duo has decided to celebrate the completion of
+                              the oral examination for their bachelor, by doing
+                              the iconic "SUI" celebration invented by none
+                              other than Christiano Ronaldo!
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* parent 4 */}
+                      <div className="border-b border-white/15 justify-between pt-5 pb-5 ">
+                        <div className=" flex items-center ">
+                          <div className="ml-4">
+                            <div className=" text-[13px] font-medium leading-[24px] block">
+                              Hamza and Simon are sometimes to the point of
+                              annoyance to others in their group, very calm and
+                              optimistic even in the busiest of situations.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </TabsContent>
                   </Tabs>
                 </div>
@@ -255,10 +314,10 @@ function Overview() {
               </div>
             </div>
             {/* Col 2 568x675*/}
-            <div className="rounded-[16px] ">
+            <div className="rounded-[16px] w-[568px] h-[751px] ">
               <img
-                src={testimage}
-                className="w-[100%] h-[100%] max-w-[100%] object-cover rounded-[16px]"
+                src={collectivePic}
+                className="h-full w-full max-w-[100%] object-cover rounded-[16px] grayscale"
               />
             </div>
           </div>

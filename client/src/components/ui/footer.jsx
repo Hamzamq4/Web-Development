@@ -1,8 +1,8 @@
 import * as React from "react";
-import hamzaAvatar from "/hamza_avatar.svg";
+import collectivePic from "/collectiveAvatar.svg";
 import hamzagithub from "/HamzaGithub.svg";
-import github from "/Github.svg";
-import linkedin from "/Linkedin.svg";
+import simongithub from "/simonGithub.svg";
+import simonlinkedin from "/simonLinkedin.svg";
 import hamzalinkedin from "/hamzaLinkedin.svg";
 import { Button } from "@/components/ui/button";
 
@@ -32,7 +32,7 @@ const Footer = () => {
                   tangible, user-friendly software.
                 </div>
                 <img
-                  src={hamzaAvatar}
+                  src={collectivePic}
                   alt=""
                   className="max-w-[36%] max-h-[36%] min-w-[25%] min-h-[25%] absolute bottom-auto top-[-20%]  align-middle inline-block mx-auto"
                 />
@@ -61,21 +61,21 @@ const Footer = () => {
                   />
                 </a>
                 <a
-                  href=""
+                  href="https://github.com/Simsmeister"
                   className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom hover:border hover:border-customblue"
                 >
                   <img
-                    src={github}
+                    src={simongithub}
                     alt="Simon Github"
                     className="max-w-[100%] align-middle inline-block"
                   />
                 </a>
                 <a
-                  href=""
+                  href="https://www.linkedin.com/in/simon-sand-andersen-a0a2a52bb/"
                   className=" w-24 h-24 bg-foreground rounded-2xl justify-center items-center flex shadow-custom hover:border hover:border-customblue"
                 >
                   <img
-                    src={linkedin}
+                    src={simonlinkedin}
                     alt="Simon Linkedin"
                     className="max-w-[100%] align-middle inline-block"
                   />

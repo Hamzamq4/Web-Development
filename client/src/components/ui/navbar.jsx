@@ -8,6 +8,7 @@ import {
   AiFillMail,
 } from "react-icons/ai";
 import { RiGroup2Fill } from "react-icons/ri";
+import logo from "/Logo.svg";
 
 const Navbar = () => {
   // State to manage the navbar's visibility

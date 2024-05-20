@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
-import cardImg1 from "/vite.svg";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { SiVorondesign } from "react-icons/si";
+import { DiClojureAlt } from "react-icons/di";
+import { MdDesignServices } from "react-icons/md";
 
 function Services() {
   const cardItems = [
     {
       id: 1,
-      image: cardImg1,
+      key: 1,
+      image: <SiVorondesign size={40} color="pink" />,
       title: "User-Centered",
       content:
         "We cater the needs of our solutions based on the requirements of the target audience",
@@ -23,10 +26,11 @@ function Services() {
     },
     {
       id: 2,
-      image: cardImg1,
-      title: "User-Centered 2",
+      key: 2,
+      image: <DiClojureAlt size={60} color="lightblue" />,
+      title: "Cross-Platform",
       content:
-        "We cater the needs of our solutions based on the requirements of the target audience",
+        "Regardless of what your need is, we can devlop it. We can develop it on any and for any platform",
       animation: {
         initial: { opacity: 0, y: 30 },
         animate: { opacity: 1, y: 0 },
@@ -39,10 +43,11 @@ function Services() {
     },
     {
       id: 3,
-      image: cardImg1,
-      title: "User-Centered 3",
+      key: 3,
+      image: <MdDesignServices size={40} color="yellow" />,
+      title: "UX/UI",
       content:
-        "We cater the needs of our solutions based on the requirements of the target audience",
+        "We use modern technologies to bring your ideas to life. And through rigrious testing, we ensure that your target group will consume your vision as you intended",
       animation: {
         initial: { opacity: 0, y: 30 },
         animate: { opacity: 1, y: 0 },
@@ -98,11 +103,9 @@ function Services() {
                   className="max-w-[451px] bg-foreground rounded-[16px] p-10 shadow-custom"
                 >
                   <div className="w-20 h-20 bg-black rounded-full justify-center items-center flex shadow-custom">
-                    <img
-                      src={item.image}
-                      alt=""
-                      className="max-w-full align-middle inline-block"
-                    />
+                    <span className="max-w-full align-middle inline-block">
+                      {item.image}
+                    </span>
                   </div>
                   <div className="mt-8 tracking-[-.64px] text-[32px] font-bold leading-10">
                     {item.title}
