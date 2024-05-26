@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import bgCircle from "/BG_Circle.svg";
 import heroPic from "/heroPic.png";
@@ -46,9 +46,9 @@ function Hero() {
       animate="visible"
       variants={containerVariants}
     >
-      <div className="flex-wrap max-w-[1355px] flex items-stretch justify-center pt-2 mx-auto">
+      <div className="flex-wrap max-w-[1355px] flex flex-col lg:flex-row items-stretch justify-center pt-2 mx-auto">
         <motion.div
-          className="bg-foreground max-w-2xl rounded-3xl pt-28 pb-28 pt flex-1 mr-2 justify-center items-center flex flex-col shadow-custom"
+          className="bg-foreground max-w-2xl rounded-3xl pt-28 pb-28 pt flex-1 mr-2 justify-center items-center flex flex-col  shadow-custom mb-5 lg:mb-0"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 1, type: "spring", stiffness: 120 }}

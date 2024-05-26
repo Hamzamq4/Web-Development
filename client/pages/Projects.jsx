@@ -1,8 +1,41 @@
+import React from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import useFetchProjects from "@/API/useFetchProjects";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Projects() {
   const { APIData, showAPIData } = useFetchProjects();
+
+  const containerVariants = {
+    initial: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    initial: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+    exit: {
+      opacity: 0,
+      y: -50,
+      transition: { duration: 0.5, ease: "easeIn" },
+    },
+  };
+
+  const imageVariants = {
+    initial: { scale: 1.1 },
+    visible: {
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
 
   if (!showAPIData)
     return (
@@ -15,8 +48,8 @@ function Projects() {
     <>
       <section className="justify-center items-center pt-[100px] pb-[200px] flex">
         <div className="max-w-[1355px] flex-1 ml-[40px] mr-[40px]">
-          <div className="flex-col flex items-start">
-            <span className="mb-5 p-2 bg-foreground rounded-lg align-left shadow-custom">
+          <div className="flex-col flex items-center">
+            <span className="mb-5 p-2 bg-foreground rounded-lg align-center shadow-custom">
               <h2 className="text-customblue text-sm font-bold">Projects</h2>
             </span>
             <h1 className="text-5xl font-bold">Take a look at our Projects</h1>
@@ -25,79 +58,87 @@ function Projects() {
             </span>
           </div>
 
-          <div className="mt-[56px]">
-            <div className="grid grid-cols-2 auto-cols-fr gap-x-6 gap-y-6">
-              {APIData.map((data, index) => {
-                if (
-                  data.properties.ProjectName.title.length > 0 &&
-                  data.properties.ShortSum.rich_text.length > 0 &&
-                  data.properties.LongSum.rich_text.length > 0 &&
-                  data.properties.Media.files.length > 0 &&
-                  data.properties.Tags.multi_select.length > 0
-                ) {
-                  // To adjust column sizing depending on the number of items. If uneven, then last item will span 2 columns
-                  const isLastItem = index === APIData.length - 1;
-                  const shouldSpanTwoColumns =
-                    isLastItem && APIData.length % 2 !== 0;
+          <div className="sticky justify-center items-center flex mt-14">
+            <div className="sticky origin-top justify-center items-center">
+              <AnimatePresence>
+                <motion.div
+                  initial="initial"
+                  animate="visible"
+                  exit="exit"
+                  variants={containerVariants}
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                >
+                  {APIData.map((data, index) => {
+                    if (
+                      data.properties.ProjectName.title.length > 0 &&
+                      data.properties.ShortSum.rich_text.length > 0 &&
+                      data.properties.LongSum.rich_text.length > 0 &&
+                      data.properties.Media.files.length > 0 &&
+                      data.properties.Tags.multi_select.length > 0
+                    ) {
+                      return (
+                        <motion.a
+                          key={data.id}
+                          initial="initial"
+                          whileInView="visible"
+                          exit="exit"
+                          viewport={{ once: false, amount: 0.5 }}
+                          variants={itemVariants}
+                          href={`/projects/${data.id}`}
+                          className="bg-foreground max-w-[1160px] flex-col shadow-custom p-[24px] flex rounded-xl mt-5 relative"
+                          style={{ zIndex: index }}
+                        >
+                          <motion.img
+                            src={data.properties.Media.files[0].file.url}
+                            alt=""
+                            className="h-[540px] w-[1160px] rounded-lg relative overflow-hidden"
+                            variants={imageVariants}
+                          />
 
-                  return (
-                    <a
-                      href={`/projects/${data.id}`}
-                      key={data.id}
-                      className={`bg-foreground max-w-[677px] flex-col shadow-custom p-[24px] flex rounded-lg ${
-                        shouldSpanTwoColumns
-                          ? "col-span-2 max-w-full"
-                          : "max-w-[677px]"
-                      }`}
-                    >
-                      <img
-                        src={data.properties.Media.files[0].file.url}
-                        alt=""
-                        className={`h-[200px]  rounded-lg relative overflow-hidden ${
-                          shouldSpanTwoColumns
-                            ? "col-span-2 max-w-full"
-                            : "max-w-[677px]"
-                        }`}
-                      />
-
-                      <div className="flex flex-wrap gap-x-3 gap-y-4 mt-[24px]">
-                        {data.properties.Tags.multi_select.map((tag) => (
-                          <div
-                            key={tag.id}
-                            className="border border-customblue bg-foreground/20 px-4 py-2 font-bold rounded-lg flex items-center justify-center text-sm text-white whitespace-nowrap hover:bg-customblue/65"
+                          <motion.div className="justify-between flex relative flex-col">
+                            <motion.div className="flex flex-wrap gap-x-3 gap-y-4 mt-[14px]">
+                              {data.properties.Tags.multi_select.map((tag) => (
+                                <motion.div
+                                  key={tag.id}
+                                  className="border border-customblue bg-foreground/20 px-4 py-2 font-bold rounded-lg flex items-center justify-center text-sm text-white whitespace-nowrap hover:bg-customblue/65"
+                                  variants={itemVariants}
+                                >
+                                  {tag.name}
+                                </motion.div>
+                              ))}
+                            </motion.div>
+                            <motion.div variants={itemVariants}>
+                              <motion.div className="mt-[20px] text-4xl font-bold">
+                                {
+                                  data.properties.ProjectName.title[0]
+                                    .plain_text
+                                }
+                              </motion.div>
+                            </motion.div>
+                          </motion.div>
+                          <motion.div
+                            className="max-w-[800px]"
+                            variants={itemVariants}
                           >
-                            {tag.name}
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="justify-between flex relative flex-col">
-                        <div>
-                          <div>
-                            <div className="pt-[24px] text-4xl font-bold">
-                              {data.properties.ProjectName.title[0].plain_text}
-                            </div>
-                            <div
-                              className={`pt-[16px] ${
-                                shouldSpanTwoColumns
-                                  ? "col-span-2 max-w-full"
-                                  : "max-w-[677px]"
-                              }`}
-                            >
+                            <motion.div className="mt-[20px] text-xl text-white/85">
                               {data.properties.ShortSum.rich_text[0].plain_text}
-                            </div>
-                          </div>
+                            </motion.div>
+                          </motion.div>
 
-                          <div className="w-12 h-12 bg-customblue rounded-full flex justify-center items-center absolute bottom-0 right-0 text-white hover:bg-customblue/65 hover:text-white">
-                            <AiOutlineArrowRight />
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  );
-                }
-                return null;
-              })}
+                          <motion.div
+                            className="w-12 h-12 bg-customblue rounded-full flex justify-center items-center absolute bottom-0 right-0 text-white hover:bg-customblue/65 hover:text-white m-3"
+                            variants={itemVariants}
+                          >
+                            <AiOutlineArrowRight className="rotate-[-45deg]" />
+                          </motion.div>
+                        </motion.a>
+                      );
+                    }
+                    return null;
+                  })}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

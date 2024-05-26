@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { motion } from "framer-motion";
 
 function FAQ() {
   const questionItems = [
@@ -44,38 +45,75 @@ function FAQ() {
         "At the moment, we don't have any certifications. However, our education has given us a lot. We have completed different sets of courses, however not taken any exam to complete the certification. We are working on it.",
     },
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        when: "beforeChildren",
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <>
       <section className="justify-center items-center w-full flex pb-[200px]">
         <div className="max-w-[758px] flex-1 flex-col justify-center items-center mx-10 flex">
-          <div className="flex-col justify-center items-center flex">
-            <div className="bg-foreground rounded-[6px] px-3 pb-1 pt-1 shadow-custom">
+          <motion.div
+            className="flex-col justify-center items-center flex"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div
+              className="bg-foreground rounded-[6px] px-3 pb-1 pt-1 shadow-custom"
+              variants={itemVariants}
+            >
               <div className=" text-sm font-bold leading-6 text-customblue">
                 FAQ
               </div>
-            </div>
+            </motion.div>
 
-            <div className="text-[50px] leading-[64px] font-black tracking-[-.64px] mt-5">
+            <motion.div
+              className="text-[50px] leading-[64px] font-black tracking-[-.64px] mt-5"
+              variants={itemVariants}
+            >
               Frequently Asked{" "}
               <span className="text-customblue">Questions </span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           <div className="mt-7 w-full">
-            <div className="h-auto max-w-[758px] flex-col justify-start items-start flex ">
+            <motion.div
+              className="h-auto max-w-[758px] flex-col justify-start items-start flex"
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+            >
               {questionItems.map((item) => (
                 <Accordion
                   key={item.id}
                   type="single"
                   collapsible
-                  className="w-full "
+                  className="w-full"
                 >
                   <AccordionItem value={item.value} className="mt-3 mb-3">
-                    <AccordionTrigger>{item.trigger}</AccordionTrigger>
-                    <AccordionContent>{item.content}</AccordionContent>
+                    <motion.div variants={itemVariants}>
+                      <AccordionTrigger>{item.trigger}</AccordionTrigger>
+                      <AccordionContent>{item.content}</AccordionContent>
+                    </motion.div>
                   </AccordionItem>
                 </Accordion>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
