@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   AiOutlineClose,
   AiOutlineMenu,
@@ -13,6 +13,8 @@ import logo from "/Logo.svg";
 const Navbar = () => {
   // State to manage the navbar's visibility
   const [nav, setNav] = useState(false);
+
+  const location = useLocation();
 
   // Toggle function to handle the navbar's display
   const handleNav = () => {
@@ -43,7 +45,11 @@ const Navbar = () => {
           {navItems.map((item) => (
             <li
               key={item.id}
-              className="p-4 hover:bg-background rounded-xl m-2 cursor-pointer duration-300 hover:text-white"
+              className={`p-2 hover:bg-customblue rounded-xl m-4 cursor-pointer duration-300 hover:text-white ${
+                location.pathname === item.href
+                  ? "border-b-2 border-customblue"
+                  : ""
+              }`}
             >
               <Link
                 to={item.href}

@@ -93,30 +93,28 @@ function Services() {
             }, [inView, controls]);
 
             return (
-              <AnimatePresence>
-                <motion.div
-                  ref={ref}
-                  key={item.id}
-                  initial={item.animation.initial}
-                  animate={controls}
-                  exit={item.animation.exit}
-                  className="max-w-[451px] bg-foreground rounded-[16px] p-10 shadow-custom"
-                >
-                  <div className="w-20 h-20 bg-black rounded-full justify-center items-center flex shadow-custom">
-                    <span className="max-w-full align-middle inline-block">
-                      {item.image}
-                    </span>
+              <motion.div
+                ref={ref}
+                key={item.id}
+                initial={item.animation.initial}
+                animate={controls}
+                exit={item.animation.exit}
+                className="max-w-[451px] bg-foreground rounded-[16px] p-10 shadow-custom"
+              >
+                <div className="w-20 h-20 bg-black rounded-full justify-center items-center flex shadow-custom">
+                  <span className="max-w-full align-middle inline-block">
+                    {item.image}
+                  </span>
+                </div>
+                <div className="mt-8 tracking-[-.64px] text-[32px] font-bold leading-10">
+                  {item.title}
+                </div>
+                <div className="pt-2">
+                  <div className="leading-7 font-[400] text-[18px] text-white/65">
+                    {item.content}
                   </div>
-                  <div className="mt-8 tracking-[-.64px] text-[32px] font-bold leading-10">
-                    {item.title}
-                  </div>
-                  <div className="pt-2">
-                    <div className="leading-7 font-[400] text-[18px] text-white/65">
-                      {item.content}
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                </div>
+              </motion.div>
             );
           })}
         </div>

@@ -4,7 +4,7 @@ import { AiFillMail, AiFillPhone } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaBuilding } from "react-icons/fa6";
 import { FaSchool } from "react-icons/fa6";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import aau from "/AAU.png";
 import useSubmitContactForm from "@/API/useSubmitContactForm";
 

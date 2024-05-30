@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function Timer() {
-  const deadline = new Date("June 28, 2024 00:00:00").getTime();
+  const deadline = new Date("June 19, 2024 17:30:00").getTime();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
