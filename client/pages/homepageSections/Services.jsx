@@ -30,7 +30,7 @@ function Services() {
       image: <DiClojureAlt size={60} color="lightblue" />,
       title: "Cross-Platform",
       content:
-        "Regardless of what your need is, we can devlop it. We can develop it on any and for any platform",
+        "Regardless of what your need is, we can develop it. We can develop it on any and for any platform",
       animation: {
         initial: { opacity: 0, y: 30 },
         animate: { opacity: 1, y: 0 },

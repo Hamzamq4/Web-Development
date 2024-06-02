@@ -175,7 +175,7 @@ function About() {
                   <div className="mt-4 mb-7">
                     <div className="text-[16px] font-[400] leading-[24px] block">
                       {" "}
-                      Spy Run was devloped to be a tool used to help kids with
+                      Spy Run was developed to be a tool used to help kids with
                       Auditory Processing Disorder, as part of their training
                       program.
                     </div>
