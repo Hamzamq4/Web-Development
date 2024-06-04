@@ -14,23 +14,11 @@ function ProjectDetails() {
     <>
       <section className="justify-center items-center w-full pt-[100px] pb-[200px] flex">
         {/* Hero Container */}
-        <div className="max-w-[940px] mx-auto flex-1 ">
+        <div className="max-w-[1160px] mx-auto flex-1 justify-center items-center">
           {/* Hero Title and Tags */}
-          <div className="max-w-[695px] mx-auto">
+          <div className="max-w-[695px] mx-auto items-center justify-center">
             {/* Tags */}
-            <div className="mb-[24px]">
-              <div className="flex flex-wrap gap-x-3 gap-y-4 mt-[24px] justify-center items-center">
-                {projectData.properties.Tags.multi_select.map((tag) => (
-                  <div
-                    key={tag.id}
-                    className=" flex-wrap gap-x-3 gap-y-4 mt-[24px] border border-customblue px-4 py-2 font-bold rounded-lg flex items-center justify-center text-sm text-white whitespace-nowrap"
-                  >
-                    {tag.name}
-                  </div>
-                ))}
-              </div>
-              {/* Tags Ends */}
-            </div>
+            <div className="mb-[24px]">{/* Tags Ends */}</div>
             {/* Tags Ends */}
             {/* Hero Title */}
             <div className="font-bold text-5xl text-center">
@@ -40,7 +28,7 @@ function ProjectDetails() {
           </div>
           {/* Hero Title and Tags Ends */}
           {/* Image */}
-          <div className="h-[540px] rounded-lg mt-[56px]">
+          <div className="h-[540px] w-[1160px] rounded-lg mt-[56px] justify-center items-center">
             <img
               src={projectData.properties.Media.files[0].file.url}
               alt=""
@@ -49,9 +37,9 @@ function ProjectDetails() {
           </div>
           {/*  Image Ends */}
           {/* Info Boxes */}
-          <div className="grid grid-cols-3 gap-x-6 gap-y-4 mt-6">
+          <div className="grid grid-cols-3 gap-x-6 gap-y-4 mt-6 justify-center items-center">
             {/* Box 1 */}
-            <div className="max-w-[300px] bg-foreground rounded-md p-8 shadow-custom">
+            <div className="max-w-[375px] bg-foreground rounded-md p-8 shadow-custom">
               <div className="text-3xl font-bold"> Topics</div>
               <div className="text-slate-400">
                 {projectData.properties.Topics.rich_text[0].plain_text}
@@ -59,10 +47,10 @@ function ProjectDetails() {
             </div>
 
             {/* Box 2 */}
-            <div className="max-w-[300px] bg-foreground rounded-md p-8 shadow-custom">
+            <div className="max-w-[375px] bg-foreground rounded-md p-8 shadow-custom">
               <div className="text-3xl font-bold">Tech Stack</div>
               <div className="text-slate-400">
-                <div className="flex flex-wrap gap-x-3 gap-y-4 justify-center items-center">
+                <div className="flex flex-wrap gap-x-3 gap-y-4 justify-start items-center">
                   {projectData.properties.Tags.multi_select.map((tag) => (
                     <div key={tag.id}>{tag.name}</div>
                   ))}
@@ -71,7 +59,7 @@ function ProjectDetails() {
             </div>
 
             {/* Box 3 */}
-            <div className="max-w-[300px] bg-foreground rounded-md p-8 shadow-custom">
+            <div className="max-w-[375px] bg-foreground rounded-md p-8 shadow-custom">
               <div className="text-3xl font-bold"> Duration</div>
               <div className="text-slate-400">
                 {projectData.properties.Duration.rich_text[0].plain_text}
