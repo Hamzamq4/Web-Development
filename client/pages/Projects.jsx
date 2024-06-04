@@ -83,7 +83,7 @@ function Projects() {
                           initial="initial"
                           whileInView="visible"
                           exit="exit"
-                          viewport={{ once: false, amount: 0.5 }}
+                          viewport={{ once: false, amount: 0.25 }}
                           variants={itemVariants}
                           href={`/projects/${data.id}`}
                           className="bg-foreground max-w-[1160px] flex-col shadow-custom p-[24px] flex rounded-xl mt-5 relative"
